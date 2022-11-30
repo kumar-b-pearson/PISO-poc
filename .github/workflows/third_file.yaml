@@ -1,0 +1,20 @@
+name: file using library
+
+on:
+  workflow_dispatch
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    - uses: actions/checkout@v2
+    
+    - name: Initial Function
+      run : echo First line of third_file
+     
+    - name: Including library
+      uses: kumar-b-pearson/PISO-poc/blob/main/.github/workflows/second_file.yml
+     
+    - name: Final Function
+      run : echo Last line of third_file
+    
