@@ -15,7 +15,7 @@ jobs:
         run : echo First line of third_file
      
       - name: Including library
-        uses: kumar-b-pearson/PISO-poc/blob/main/.github/workflows/second_file.yml@v1
+        uses: kumar-b-pearson/PISO-poc/.github/workflows/second_file.yml@v1
 
       - name: Final Function
         run : echo Last line of third_file
