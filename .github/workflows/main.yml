@@ -1,3 +1,5 @@
+name: Twist Lock Scan
+
 on:
   workflow_dispatch
 
