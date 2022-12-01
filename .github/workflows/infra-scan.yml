@@ -15,9 +15,9 @@ jobs:
       
       - name: Build the image
         run: docker build -t bkob .
+        
+  scan:
+    uses: kumar-b-pearson/PISO-poc/.github/workflows/twistlock-scan.yml@main
+    with:
+      image_name: bkob
 
-      - name: PISO Twistlock Scan
-        uses: kumar-b-pearson/PISO-poc/.github/workflows/twistlock-scan.yml@main
-        with:
-          image_name: bkob
-    
