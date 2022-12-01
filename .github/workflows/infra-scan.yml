@@ -5,7 +5,7 @@ on:
   
 jobs:
 
-  Build and Scan:
+  build-and-scan:
     
     runs-on: ubuntu-latest
     
