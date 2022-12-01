@@ -1,0 +1,23 @@
+name: Infra Scan
+
+on:
+  workflow_dispatch:
+  
+jobs:
+
+  Build and Scan:
+    
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v2
+      
+      - name: Build the image
+        run: docker build -t bkob .
+
+      - name: PISO Twistlock Scan
+        uses: kumar-b-pearson/PISO-poc/.github/workflows/twistlock-scan.yml@main
+        with:
+          image_name: bkob
+    
