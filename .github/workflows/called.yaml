@@ -1,6 +1,6 @@
 name: Greeting_Logic
 on:
-  worflow_call
+  workflow_call:
     inputs:
       name:
         required: true
