@@ -9,17 +9,15 @@ on:
         type: string
         
 jobs:
-  download-and-scan:
-    
+  twistlock-scan:
     runs-on: ubuntu-latest
-    
     steps:
       - name: Downloading image
         uses: actions/download-artifact@v3
         with: 
           name: bkob
           
-      - name: Checking Files
+      - name: checking files
         run: ls -la
       
       - name: Importing the Docker Image
@@ -28,11 +26,11 @@ jobs:
           docker images | grep bkob
       
       - name: PISO Twistlock Scan
+        id: scan
         uses: PaloAltoNetworks/prisma-cloud-scan@v1
         with:
-          pcc_console_url: ${{secrets.PCC_CONSOLE_URL}}
-          pcc_user: ${{secrets.PCC_USER}}
-          pcc_pass: ${{secrets.PCC_PASS}}
-          image_name: bkob
-          
+          pcc_console_url: ${{ secrets.PCC_CONSOLE_URL }}
+          pcc_user: ${{ secrets.PCC_USER }}
+          pcc_pass: ${{ secrets.PCC_PASS }}
+          image_name: bkob          
           
