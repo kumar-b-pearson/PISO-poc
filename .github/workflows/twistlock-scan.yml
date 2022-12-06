@@ -5,7 +5,7 @@ on:
     inputs:
       image_name:
         description: 'Name of the image to be scanned, Make sure the same is used for exporting the file'
-        required: true
+        required: false
         type: string
         
 jobs:
