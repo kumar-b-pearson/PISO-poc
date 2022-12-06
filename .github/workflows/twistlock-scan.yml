@@ -17,20 +17,22 @@ jobs:
       - name: Downloading image
         uses: actions/download-artifact@v3
         with: 
-          name: ${{inputs.image_name}}
+          name: bkob
           
       - name: Checking Files
         run: ls -la
       
       - name: Importing the Docker Image
         run: |
-          docker load -i ${{inputs.image_name}}.tar
-          docker images | grep ${{inputs.image_name}}
+          docker load -i bkob.tar
+          docker images | grep bkob
       
       - name: PISO Twistlock Scan
         uses: PaloAltoNetworks/prisma-cloud-scan@v1
         with:
-          pcc_console_url: ${{ secrets.PCC_CONSOLE_URL }}
-          pcc_user: ${{ secrets.PCC_USER }}
-          pcc_pass: ${{ secrets.PCC_PASS }}
-          image_name: ${{inputs.image_name}}
+          pcc_console_url: ${{secrets.PCC_CONSOLE_URL}}
+          pcc_user: ${{secrets.PCC_USER}}
+          pcc_pass: ${{secrets.PCC_PASS}}
+          image_name: bkob
+          
+          
