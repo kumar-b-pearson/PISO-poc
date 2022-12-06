@@ -23,7 +23,6 @@ runs:
   using: "composite"
   steps:
      - name: PISO Twistlock Scan
-      id: scan
       uses: PaloAltoNetworks/prisma-cloud-scan@v1
       with:
         pcc_console_url: ${{ inputs.twistlock_url }}
