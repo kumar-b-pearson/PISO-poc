@@ -3,16 +3,16 @@ description: "Perform twistlock by passing the image in the composite action"
 
 inputs: 
   twistlock_url:
-    descrition: "URL of the twistlock "
+    description: "URL of the twistlock "
     required: true
   twistlock_username:
-    descrition: "Username of the twistlock "
+    description: "Username of the twistlock "
     required: true
   twistlock_password:
-    descrition: "Password of the twistlock "
+    description: "Password of the twistlock "
     required: true
   image_name:
-    descrition: "Image name to be scanned"
+    description: "Image name to be scanned"
     required: true
     
 runs: 
