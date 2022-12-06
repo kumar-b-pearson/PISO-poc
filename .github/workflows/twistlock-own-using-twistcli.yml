@@ -1,0 +1,19 @@
+name: Twist Lock Scan by BKOB
+
+on:
+  workflow_call:
+    inputs:
+      image_name:
+        description: 'Image to be displayed'
+        required: true
+        type: string
+        
+jobs:
+  run-twistlock-scan:
+    runs-on: ubuntu-latest
+    
+      - name: Download the file
+        uses: actions/download-artifact@v2
+        with: 
+          name: my-artifact
+          run: cat my-artifact
