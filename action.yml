@@ -5,28 +5,24 @@ inputs:
   twistlock_username:
     descrition: "Username of the twistlock "
     required: true
-    type: string
   twistlock_password:
     descrition: "Password of the twistlock "
     required: true
-    type: string
   twistlock_url:
     descrition: "URL of the twistlock "
     required: true
-    type: string
   image_name:
     descrition: "Image name to be scanned"
     required: true
-    type: string
     
 runs: 
   using: "composite"
   steps:
-     - name: PISO Twistlock Scan
+    - name: PISO Twistlock Scan
       uses: PaloAltoNetworks/prisma-cloud-scan@v1
       with:
-        pcc_console_url: ${{ inputs.twistlock_url }}
-        pcc_user: ${{ inputs.twistlock_username }}
-        pcc_pass: ${{ inputs.twistlock_password }}
-        image_name: ${{ inputs.image_name }}
+        pcc_console_url: ${{inputs.twistlock_url}}
+        pcc_user: ${{inputs.twistlock_username}}
+        pcc_pass: ${{inputs.twistlock_password}}
+        image_name: ${{inputs.image_name}}
 
