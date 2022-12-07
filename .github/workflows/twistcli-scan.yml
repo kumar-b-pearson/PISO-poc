@@ -1,0 +1,32 @@
+name: Twist Lock Scan
+
+on:
+  workflow_call:
+    inputs:
+      image_name:
+        description: 'Name of the image to be scanned, Make sure the same is used for exporting the file'
+        required: true
+        type: string
+        
+jobs:
+  twistlock-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Downloading image
+        uses: actions/download-artifact@v3
+        with: 
+          name: ${{inputs.image_name}}
+          
+      - name: checking files
+        run: ls -la
+      
+      - name: Importing the Docker Image
+        run: |
+          docker load -i ${{inputs.image_name}}.tar
+          docker images | grep ${{inputs.image_name}}
+          
+          
+      - name: Download and scan twistcli
+        run: |
+          curl -s -k -L -u ${{secrets.PCC_USER}}:${{secrets.PCC_PASS}} ${{ secrets.PCC_CONSOLE_URL }}/api/v1/util/twistcli > twistcli && chmod 0755 twistcli
+          ./twistcli images scan -u ${{secrets.PCC_USER}} -p ${{secrets.PCC_PASS}} --address ${{ secrets.PCC_CONSOLE_URL }} --details --output-file ./twistcli.log --ci ${{inputs.image_name}}
