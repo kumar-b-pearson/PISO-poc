@@ -28,5 +28,6 @@ jobs:
           
       - name: Download and scan twistcli
         run: |
-          curl -s -k -L -u ${{secrets.PCC_USER}}:${{secrets.PCC_PASS}} ${{ secrets.PCC_CONSOLE_URL }}/api/v1/util/twistcli > /tmp/twistcli && chmod +x /tmp/twistcli
-          /tmp/twistcli images scan -u ${{secrets.PCC_USER}} -p ${{secrets.PCC_PASS}} --address ${{ secrets.PCC_CONSOLE_URL }} --details --output-file ./twistcli.log --ci ${{inputs.image_name}}
+          curl -s -k -L -u ${{secrets.PCC_USER}}:${{secrets.PCC_PASS}} ${{ secrets.PCC_CONSOLE_URL }}/api/v1/util/twistcli > twistcli && chmod +x twistcli
+          ls -la
+          ./twistcli images scan -u ${{secrets.PCC_USER}} -p ${{secrets.PCC_PASS}} --address ${{ secrets.PCC_CONSOLE_URL }} --details --output-file ./twistcli.log --ci ${{inputs.image_name}}
