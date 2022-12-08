@@ -13,14 +13,14 @@ jobs:
       - name: Check out the repository
         uses: actions/checkout@v2
       
-      - name: Build the image
-        run: docker build -t bkob .
+#      - name: Build the image
+#        run: docker build -t bkob .
       
       - name: Check the files 
         run: ls -la
         
   scan:
-    uses: kumar-b-pearson/PISO-poc/.github/workflows/twistlock-scan.yml@main
+    uses: kumar-b-pearson/PISO-poc/.github/workflows/twistcli-scan.yml@main
     with:
       image_name: bkob
 
