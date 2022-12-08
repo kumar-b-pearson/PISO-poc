@@ -23,4 +23,5 @@ jobs:
     uses: kumar-b-pearson/PISO-poc/.github/workflows/twistcli-scan.yml@main
     with:
       image_name: bkob
+    secrets: inherit
 
