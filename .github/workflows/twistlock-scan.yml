@@ -5,7 +5,7 @@ on:
     inputs:
       image_name:
         description: 'Name of the image to be scanned, Make sure the same is used for exporting the file'
-        required: false
+        required: true
         type: string
         
 jobs:
@@ -15,15 +15,15 @@ jobs:
       - name: Downloading image
         uses: actions/download-artifact@v3
         with: 
-          name: bkob
+          name: ${{inputs.image_name}}
           
       - name: checking files
         run: ls -la
       
       - name: Importing the Docker Image
         run: |
-          docker load -i bkob.tar
-          docker images | grep bkob
+          docker load -i ${{inputs.image_name}}.tar
+          docker images | grep ${{inputs.image_name}}
       
       - name: PISO Twistlock Scan
         id: scan
@@ -32,5 +32,5 @@ jobs:
           pcc_console_url: ${{ secrets.PCC_CONSOLE_URL }}
           pcc_user: ${{ secrets.PCC_USER }}
           pcc_pass: ${{ secrets.PCC_PASS }}
-          image_name: bkob          
+          image_name: ${{inputs.image_name}}          
           
