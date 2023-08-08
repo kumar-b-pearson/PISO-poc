@@ -11,9 +11,10 @@ jobs:
 
     steps:
       - name: echo Details
-        run: echo ${{ secrets.PCC_USER }}
-        run: echo ${{ secrets.PCC_PASS }}
-        run: echo ${{ secrets.PCC_CONSOLE_URL }}
+        run: |
+          echo ${{ secrets.PCC_USER }}
+          echo ${{ secrets.PCC_PASS }}
+          echo ${{ secrets.PCC_CONSOLE_URL }}
       
       - name: Check out the repository
         uses: actions/checkout@v2
