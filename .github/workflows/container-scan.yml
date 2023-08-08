@@ -10,6 +10,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: echo Details
+        run: echo ${{ secrets.PCC_USER }}
+        run: echo ${{ secrets.PCC_PASS }}
+        run: echo ${{ secrets.PCC_CONSOLE_URL }}
+      
       - name: Check out the repository
         uses: actions/checkout@v2
 
